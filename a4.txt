@@ -1,0 +1,118 @@
+PRACTICAL 4
+
+Aim: Develop a client which consumes web services developed in different platforms. Create a webservice in netbean and use it in .NET Requirement:
+1. Visual Studio Community 2017
+2. Version : 15.8 or latest
+In this practical we are creating Web Service in Visual Studio ant then we will
+consume it in NetBeans.
+Step 1:-
+Create a web application in Netbeans
+
+Step 2:- 
+Name the project as FactorialWebService → click on Next → click on Finish.
+
+Step 3:-
+Right Click on FactorialWebService project->New->Web Service
+
+Step 4:- Name the web service as Factorialwebservice → give package name as abc.com
+→click on Finish.
+
+Step 5:-
+Go to design page → Add operation
+Give method name as factorial → Return type double → Parameter num → Type double
+
+Step 6:- 
+Go to source page and Now type the code below in Factorialwebservice.java file
+
+----------------------------------------------------------------------------------------------------------------------
+
+Factorialwebservice.java:
+
+package abc.com;
+
+import javax.jws.WebService;
+import javax.jws.WebMethod;
+import javax.jws.WebParam;
+
+@WebService(serviceName = "Factorialwebservice")
+public class Factorialwebservice{
+@WebMethod (operationName = "factorial")
+public double factorial(@WebParam(name = "num") double num){
+double f=1;
+int I;
+for(i=1;i<=num;i++){
+f = f*I;
+}
+return f;
+}
+}
+
+-------------------------------------------------------------------------------------------------------------------------
+
+
+
+Step 7:-
+Right click on project name FactorialWebService->clean and build
+
+Step 8:- 
+Right click on FactorialWebService → test web service
+
+Step 9:-
+Test the web service in the browser.
+
+Step 10:-
+Copy the WSDL Link of the web service.Steps to create the Client app in .NET
+
+Step 11:-
+Open Visual Studio IDE → file → new project
+Create a New Project in C# Empty Web Application
+
+Step 12:-
+Give the project name as WebService_Practical4_Client
+
+Step 13:-
+Right click on project → select Add → select New Item
+
+Step 14:- 
+Add a new Empty web form.
+
+Step 15:-
+Design the interface and give the appropriate name and id's
+
+Step 16:- 
+Right click on project name FactorialWebService->clean and build
+
+Step 17:-
+Test the WebService
+
+Step 18:- 
+Copy the WSDL Link of the web service.
+
+Step 19:-
+Now RightClick on Project name and add (Service Reference in Client app)
+
+Step 20:-
+Paste the WSDL url in the address.
+
+Step 21:-
+Now double click the button and then type the following cod in the aspx.cs f
+-----------------------------------------------------------------------------------------------------------------------
+
+WebService_Practical4_Client:-
+
+space WebService_Practical4_Client
+
+public partial class webServicePractical4_Client : System Web.UI.Page{
+
+protected void Page_Load(object sender,EventArgs e){
+
+}
+
+protected void Button1_Click(object sender, EventArgs e){
+ServiceReference1.FactorialwebserviceClient client = new ServiceReference1.FactorialwebserviceClient();
+Label1.Text = "Factorial is: "+ client.factorial(Convert.ToDouble(TextBox1.Text)).ToString();
+}}
+--------------------------------------------------------------------------------------------------------------
+
+Step 22:-
+
